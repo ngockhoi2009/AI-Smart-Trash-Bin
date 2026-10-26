@@ -4,8 +4,9 @@
 (https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
 
 ## Project Gallery
-
-*Photos of the assembled hardware and sorting mechanism will be added here.*
+P1.jpg
+P2.jpg
+P3.jpg
 
 ## Key Learning Outcomes
 
