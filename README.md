@@ -1,8 +1,7 @@
 ## Demonstration
 
-*Video demonstration of the working prototype.*
-
-<!-- Add your video link here -->
+[*Video demonstration of the working prototype.*]
+(https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
 
 ## Project Gallery
 
