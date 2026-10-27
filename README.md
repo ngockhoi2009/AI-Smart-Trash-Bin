@@ -6,9 +6,30 @@ An embedded AI project exploring the integration of ESP32, computer vision, and 
 (https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
 
 ## Project Gallery
+
 ![Project Photo 1](P1.jpg)
 ![Project Photo 2](P2.jpg)
 ![Project Photo 3](P3.jpg)
+
+## System Architecture
+
+The prototype integrates embedded hardware, image capture, and AI-powered classification to automate waste sorting.
+1. Object Detection: The HC-SR04 ultrasonic sensor detects an object near the bin.
+2. Image Capture: The ESP32 initiates the image-capture workflow through an iPhone.
+3. AI Classification: The captured image is sent to a Node.js server, which uses the Gemini API to classify the waste.
+4. Hardware Control: The ESP32 processes the classification result and controls two servo motors to perform the sorting action.
+
+## Hardware & Technologies
+
+- Microcontroller: ESP32
+- Distance Sensor: HC-SR04 ultrasonic sensor
+- Actuators: Two servo motors
+- Image Capture: iPhone camera interface
+- Backend: Node.js and Express.js
+- AI Service: Google Gemini API
+- Communication: HTTP and JSON
+- Programming Languages: C++ and JavaScript
+
 ## Source Code
 
 - **Arduino Firmware (C++):** [View Code](./IoTBin.ino)
