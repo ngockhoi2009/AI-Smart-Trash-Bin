@@ -9,9 +9,9 @@
 ![Project Photo 3](P3.jpg)
 ## Source Code
 
-Arduino Firmware (C++): ESP32 sensor control, HTTP communication, and servo operation.
-Node.js Backend: Server-side processing and AI-powered waste classification.
-HTML Camera Interface: iPhone camera interface for image capture and submission.
+- Arduino Firmware (C++): ESP32 sensor control, HTTP communication, and servo operation.
+- Node.js Backend: Server-side processing and AI-powered waste classification.
+- HTML Camera Interface: iPhone camera interface for image capture and submission.
 Code links will be added to each component.
 
 ## Key Learning Outcomes
