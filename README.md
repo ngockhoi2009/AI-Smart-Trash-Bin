@@ -27,5 +27,4 @@ I independently implemented the Arduino firmware and developed the Node.js backe
 
 ---
 
-*An independent hands-on project exploring applied AI and embedded systems.*# AI-Smart-Trash-Bin-Copy
-An ESP32-based smart waste-sorting prototype integrating sensors, image capture, AI classification, and servo control.
+*An independent hands-on project exploring applied AI and embedded systems.*
