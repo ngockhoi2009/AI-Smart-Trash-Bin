@@ -1,5 +1,5 @@
 # AI-Smart-Trash-Bin
-
+An embedded AI project exploring the integration of ESP32, computer vision, and automated waste sorting.
 ## Demonstration
 
 [*Video demonstration of the working prototype.*]
