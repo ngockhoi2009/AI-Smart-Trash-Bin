@@ -11,10 +11,9 @@ An embedded AI project exploring the integration of ESP32, computer vision, and 
 ![Project Photo 3](P3.jpg)
 ## Source Code
 
-- Arduino Firmware (C++): ESP32 sensor control, HTTP communication, and servo operation.
-- Node.js Backend: Server-side processing and AI-powered waste classification.
-- HTML Camera Interface: iPhone camera interface for image capture and submission.
-Code links will be added to each component.
+- **Arduino Firmware (C++):** [View Code](./IoTBin.ino)
+- **Node.js Backend:** [View Code](./Server.js)
+- **HTML Camera Interface:** [View Code](./Web.html)
 
 ## Key Learning Outcomes
 
