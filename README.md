@@ -1,3 +1,6 @@
+AI-Smart-Trash-Bin
+
+An ESP32-based smart waste-sorting prototype integrating sensors, image capture, AI classification, and servo control.
 ## Demonstration
 
 [*Video demonstration of the working prototype.*]
