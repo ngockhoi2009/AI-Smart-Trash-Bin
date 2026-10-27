@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trash Bin - Auto Camera</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 16px;
+      text-align: center;
+    }
+
+    video, img {
+      width: 100%;
+      border-radius: 12px;
+      background: #222;
+    }
+
+    button {
+      padding: 12px 18px;
+      margin: 8px 4px;
+      font-size: 16px;
+    }
+
+    #status {
+      white-space: pre-wrap;
+      margin: 16px 0;
+    }
+
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+  <h2>Trash Bin AI</h2>
+  <p>Bật camera. Hệ thống sẽ chụp khi ESP32 phát hiện vật.</p>
+
+  <video id="camera" autoplay playsinline muted></video>
+
+  <div>
+    <button id="start">Bật camera</button>
+    <button id="stop" disabled>Dừng</button>
+  </div>
+
+  <p id="status">Chưa bật camera.</p>
+  <img id="preview" alt="Ảnh vừa chụp">
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const video = document.getElementById("camera");
+    const canvas = document.getElementById("canvas");
+    const preview = document.getElementById("preview");
+    const status = document.getElementById("status");
+    const startBtn = document.getElementById("start");
+    const stopBtn = document.getElementById("stop");
+
+    let stream = null;
+    let pollTimer = null;
+    let busy = false;
+    let checking = false;
+    let stopped = true;
+
+    startBtn.onclick = async () => {
+      try {
+        stopped = false;
+        status.textContent = "Đang xin quyền camera...";
+
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: "environment" } },
+          audio: false
+        });
+
+        video.srcObject = stream;
+        await video.play();
+
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        status.textContent =
+          "Camera đã bật. Đang chờ tín hiệu từ ESP32...";
+
+        // Kiểm tra server mỗi 500 ms
+        pollTimer = setInterval(checkCaptureRequest, 500);
+
+      } catch (err) {
+        stopped = true;
+        status.textContent = "Lỗi camera: " + err.message;
+      }
+    };
+
+    async function checkCaptureRequest() {
+      if (stopped || busy || checking) return;
+
+      checking = true;
+
+      try {
+        const response = await fetch("/capture-status", {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("Không kiểm tra được tín hiệu");
+        }
+
+        const result = await response.json();
+
+        if (result.capture) {
+          await captureAndClassify();
+        }
+      } catch (err) {
+        status.textContent = "Lỗi kết nối server: " + err.message;
+      } finally {
+        checking = false;
+      }
+    }
+
+
+async function captureAndClassify() {
+  if (busy || stopped) return;
+
+  busy = true;
+  let previewURL = null;
+
+  try {
+    status.textContent = "Đang chờ camera sẵn sàng...";
+
+    // Wait up to 3 seconds for a usable video frame
+    const deadline = Date.now() + 3000;
+
+    while (
+      !stopped &&
+      video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA
+    ) {
+      if (Date.now() >= deadline) {
+        throw new Error("Camera chua san sang");
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    if (stopped) return;
+
+    status.textContent = "Đang chụp ảnh và gửi Gemini...";
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas.getContext("2d").drawImage(video, 0, 0);
+
+    const blob = await new Promise(resolve =>
+      canvas.toBlob(resolve, "image/jpeg", 0.8)
+    );
+
+    if (!blob) throw new Error("Không tạo được ảnh");
+
+    previewURL = URL.createObjectURL(blob);
+
+    if (preview.src.startsWith("blob:")) {
+      URL.revokeObjectURL(preview.src);
+    }
+
+    preview.src = previewURL;
+
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () =>
+        resolve(reader.result.split(",")[1]);
+
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+    const response = await fetch("/classify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        imageBase64: base64,
+        mimeType: "image/jpeg"
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Lỗi phân loại");
+    }
+
+    status.textContent =
+      "Phân loại thành công!\nLoại rác: " + result.type;
+
+  } catch (err) {
+    status.textContent = "Lỗi: " + err.message;
+  } finally {
+    busy = false;
+  }
+}
+
+    stopBtn.onclick = () => {
+      stopped = true;
+
+      clearInterval(pollTimer);
+      pollTimer = null;
+
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+
+      stream = null;
+      video.srcObject = null;
+
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+      status.textContent = "Đã dừng camera.";
+    };
+  </script>
+</body>
+</html>
