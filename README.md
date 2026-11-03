@@ -2,14 +2,13 @@
 An embedded AI project exploring the integration of ESP32, computer vision, and automated waste sorting.
 ## Demonstration
 
-[*Watch the Project Demonstration*]
-(https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
+[*Watch the Project Demonstration*](https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
 
 ## Project Gallery
 
-![Project Photo 1](P1.jpg)
-![Project Photo 2](P2.jpg)
-![Project Photo 3](P3.jpg)
+[View Assembly Wiring](assembly-wiring.jpg)
+[View Completed Prototype](completed-prototype.png)
+[View System Workflow](system-workflow.png)
 
 ## System Architecture
 
