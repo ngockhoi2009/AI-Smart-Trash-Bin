@@ -1,50 +1,69 @@
-# AI-Smart-Trash-Bin
-An embedded AI project exploring the integration of ESP32, computer vision, and automated waste sorting.
+![AI Smart Trash Bin](completed-prototype.png)
+
+# AI Smart Trash Bin
+
+An independent project combining embedded systems, computer vision, and AI-powered waste classification.
+
 ## Demonstration
 
-[*Watch the Project Demonstration*](https://drive.google.com/file/d/1eQrgix22_SPGAshmd_g9ONcijUHg3q8C/view?usp=sharing)
+[Watch Project Demonstration](Demonstration.mp4)
 
-## Project Gallery
+## Overview
 
-[View Assembly Wiring](assembly-wiring.jpg)
-[View Completed Prototype](completed-prototype.png)
-[View System Workflow](system-workflow.png)
+This prototype explores how AI can interact with physical devices to automate waste sorting. It combines an ESP32, an ultrasonic sensor, an iPhone camera interface, and servo motors.
 
-## System Architecture
+## How It Works
 
-The prototype integrates embedded hardware, image capture, and AI-powered classification to automate waste sorting.
-1. Object Detection: The HC-SR04 ultrasonic sensor detects an object near the bin.
-2. Image Capture: The ESP32 initiates the image-capture workflow through an iPhone.
-3. AI Classification: The captured image is sent to a Node.js server, which uses the Gemini API to classify the waste.
-4. Hardware Control: The ESP32 processes the classification result and controls two servo motors to perform the sorting action.
+![System Workflow](system-workflow.png)
+
+1. **Detection:** HC-SR04 detects an object.
+2. **Image Capture:** ESP32 initiates image capture through an iPhone.
+3. **Classification:** A Node.js server sends the image to Google Gemini API.
+4. **Sorting:** ESP32 receives the result and controls two servo motors.
 
 ## Hardware & Technologies
 
-- Microcontroller: ESP32
-- Distance Sensor: HC-SR04 ultrasonic sensor
-- Actuators: Two servo motors
-- Image Capture: iPhone camera interface
-- Backend: Node.js and Express.js
-- AI Service: Google Gemini API
-- Communication: HTTP and JSON
-- Programming Languages: C++ and JavaScript
+- **Hardware:** ESP32, HC-SR04, 2 SG90 servo motors
+- **Backend:** Node.js, Express.js
+- **AI:** Google Gemini API
+- **Languages:** C++, JavaScript, HTML
+- **Communication:** HTTP, JSON
+
+## Circuit Design
+
+![Circuit Diagram](circuit_image.png)
+
+[View Assembly Wiring](assembly-wiring.jpg)
+
+## Development Journey
+
+**Starting Out**
+
+[Briefly explain why you wanted to build this project and what inspired the idea.]
+
+**Making It Work**
+
+[Describe one interesting challenge when connecting the ESP32, iPhone, and Node.js server.]
+
+**Testing & Improvements**
+
+[Mention one actual bug you encountered and how you figured out the solution.]
 
 ## Source Code
 
-- **Arduino Firmware (C++):** [View Code](./IoTBin.ino)
-- **Node.js Backend:** [View Code](./Server.js)
-- **HTML Camera Interface:** [View Code](./Web.html)
+- [Arduino Firmware – IoTBin.ino](IoTBin.ino)
+- [Node.js Backend – Server.js](Server.js)
+- [Camera Interface – Web.html](Web.html)
 
-## Key Learning Outcomes
+## What I Learned
 
-- Integrating electronic components into a working prototype
-- Connecting hardware with an AI-powered workflow
-- Exploring the interaction between software decisions and physical actions
-- Testing and troubleshooting a multidisciplinary engineering project
+- Integrating hardware and software into one system.
+- Connecting AI services with embedded devices.
+- Debugging and testing a multidisciplinary project.
 
-## Development Process & AI Assistance
+## AI Assistance
 
-I independently implemented the Arduino firmware and developed the Node.js backend, using AI assistance mainly for HTTP communication and JSON handling. Throughout the project, I tested and refined the code to ensure reliable communication between the ESP32 and the server. I am continuing to study these concepts to strengthen my understanding and gradually improve my ability to implement the system independently.
+I independently implemented the firmware and backend, while using AI assistance to understand unfamiliar concepts and troubleshoot parts of the implementation. I tested and refined the code throughout development.
 
 ---
 
