@@ -6,7 +6,7 @@ An independent project combining embedded systems, computer vision, and AI-power
 
 ## Demonstration
 
-[Watch Project Demonstration](Demonstration.mp4)
+[Watch Project Demonstration](https://github.com/ngockhoi2009/AI-Smart-Trash-Bin/issues/new)
 
 ## Overview
 
