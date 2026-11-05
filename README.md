@@ -33,7 +33,7 @@ This prototype explores how AI can interact with physical devices to automate wa
 
 ![Circuit Diagram](circuit_image.png)
 
-[View Assembly Wiring](assembly-wiring.jpg)
+![Assembly Wiring](assembly-wiring.jpg)
 
 ## Development Journey
 
