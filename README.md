@@ -37,8 +37,6 @@ This prototype explores how AI can interact with physical devices to automate wa
 
 ## Development Journey
 
-## Development Journey
-
 **Step 1 – Hardware Setup**
 
 Assembled the ESP32, HC-SR04 ultrasonic sensor, and two SG90 servo motors. Configured the power connections and GPIO assignments for object detection and servo control.
@@ -73,7 +71,7 @@ Connected the hardware, camera interface, and backend into a complete workflow. 
 
 ## AI Assistance
 
-AI tools were integrated into my development process, providing substantial assistance with the HTML/JavaScript camera interface, code refinement, and troubleshooting. I combined this assistance with my own implementation of the Node.js backend and Arduino firmware, continuously testing and refining the complete system.
+I used AI assistance during development, particularly for building the HTML/JavaScript camera interface and troubleshooting. I implemented the Node.js backend and Arduino firmware, then integrated and tested all components to make the complete system work together.
 
 ---
 
