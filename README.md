@@ -43,17 +43,17 @@ This prototype explores how AI can interact with physical devices to automate wa
 
 Assembled the ESP32, HC-SR04 ultrasonic sensor, and two SG90 servo motors. Configured the power connections and GPIO assignments for object detection and servo control.
 
-**Step 2 – ESP32 Firmware**
+**Step 2 – AI Backend**
 
-Developed the firmware in Arduino IDE to handle Wi-Fi connectivity, ultrasonic sensing, HTTP requests, and servo operations. Added detection guards to prevent repeated triggers.
+Developed a Node.js server using Express.js and the Google GenAI SDK. Integrated the Gemini API to classify captured images and return results to the ESP32.
 
 **Step 3 – Camera Interface**
 
 Built an HTML/JavaScript webpage to access the iPhone camera. Implemented a capture mechanism triggered by the ESP32 and image transmission to the backend.
 
-**Step 4 – AI Backend**
+**Step 4 – ESP32 Firmware**
 
-Developed a Node.js server using Express.js and the Google GenAI SDK. Integrated the Gemini API to classify captured images and return results to the ESP32.
+Developed the firmware in Arduino IDE to handle Wi-Fi connectivity, ultrasonic sensing, HTTP requests, and servo operations. Added detection guards to prevent repeated triggers.
 
 **Step 5 – System Integration & Testing**
 
@@ -73,7 +73,7 @@ Connected the hardware, camera interface, and backend into a complete workflow. 
 
 ## AI Assistance
 
-I independently implemented the firmware and backend, while using AI assistance to understand unfamiliar concepts and troubleshoot parts of the implementation. I tested and refined the code throughout development.
+AI tools were integrated into my development process, providing substantial assistance with the HTML/JavaScript camera interface, code refinement, and troubleshooting. I combined this assistance with my own implementation of the Node.js backend and Arduino firmware, continuously testing and refining the complete system.
 
 ---
 
