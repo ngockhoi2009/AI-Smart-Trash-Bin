@@ -2,7 +2,7 @@
 
 # AI Smart Trash Bin
 
-An independent project combining embedded systems, computer vision, and AI-powered waste classification.
+An independent project combining embedded systems with AI-powered image classification to explore automated waste sorting.
 
 ## Demonstration
 
@@ -17,7 +17,7 @@ This prototype explores how AI can interact with physical devices to automate wa
 ![System Workflow](system-workflow.png)
 
 1. **Detection:** HC-SR04 detects an object.
-2. **Image Capture:** ESP32 initiates image capture through an iPhone.
+2. **Image Capture:** The iPhone camera interface captures an image when triggered by the ESP32.
 3. **Classification:** A Node.js server sends the image to Google Gemini API.
 4. **Sorting:** ESP32 receives the result and controls two servo motors.
 
@@ -65,9 +65,9 @@ Connected the hardware, camera interface, and backend into a complete workflow. 
 
 ## What I Learned
 
-- Integrating hardware and software into one system.
-- Connecting AI services with embedded devices.
-- Debugging and testing a multidisciplinary project.
+- Integrating embedded hardware, backend services, and web interfaces into a working system.
+- Connecting cloud-based AI services with microcontrollers through HTTP and JSON.
+- Debugging communication, sensor triggering, and hardware-software integration issues.
 
 ## AI Assistance
 
