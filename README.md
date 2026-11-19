@@ -59,7 +59,7 @@ Connected the hardware, camera interface, and backend into a complete workflow. 
 
 ## Source Code
 
-- [Node.js Backend – ServerNode.js](ServerNode.js)
+- [Node.js Backend – Node.js](Node.js)
 - [Arduino Firmware – IoTBin.ino](IoTBin.ino)
 - [Camera Interface – Web.html](Web.html)
 
